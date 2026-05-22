@@ -1,0 +1,16 @@
+async function ingest() {
+    const repo = document.getElementById('repo').value;
+    const res = await fetch('/ingest?repo_url=' + encodeURIComponent(repo), {method: 'POST'});
+    alert('Ingestion started');
+}
+
+async function runFix() {
+    // Example call
+    const res = await fetch('/fix', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({repo_url: "...", error: "ImportError: ...", repo_path: "/tmp/repos/xxx"})
+    });
+    const data = await res.json();
+    document.getElementById('logs').innerHTML += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+}

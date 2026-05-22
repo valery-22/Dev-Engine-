@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dev-Engine</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-zinc-950 text-zinc-100">
+    <div class="max-w-7xl mx-auto p-8">
+      <h1 class="text-4xl font-bold mb-2">Dev-Engine</h1>
+      <p class="text-zinc-400 mb-8">Autonomous SDLC Platform</p>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800">
+          <h2 class="text-xl mb-4">Ingest Repository</h2>
+          <input
+            id="repo"
+            class="bg-zinc-800 w-full p-3 rounded border border-zinc-700"
+            placeholder="https://github.com/user/repo.git"
+          />
+          <button
+            type="button"
+            onclick="ingest()"
+            class="mt-4 bg-emerald-600 hover:bg-emerald-500 px-6 py-3 rounded font-medium"
+          >
+            Ingest
+          </button>
+        </div>
+
+        <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800">
+          <h2 class="text-xl mb-4">Fix Job</h2>
+          <button
+            type="button"
+            onclick="runFix()"
+            class="bg-amber-600 hover:bg-amber-500 px-6 py-3 rounded font-medium"
+          >
+            Trigger Autonomous Fix
+          </button>
+        </div>
+      </div>
+
+      <div
+        id="logs"
+        class="mt-8 bg-black p-6 rounded-xl font-mono text-sm overflow-auto h-96 border border-zinc-800"
+      ></div>
+    </div>
+
+    <script src="static/js/app.js"></script>
+  </body>
+</html>
