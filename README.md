@@ -26,12 +26,11 @@ Dev-Engine acts as an autonomous AI pair-programmer that lives inside your engin
 flowchart TD
     A[GitHub Repository] --> B[Repository Ingestion Service]
     B --> C[File Parsing & Dependency Mapping]
-    C --> D[Qdrant Vector DB + Metadata]
+    C --> D[Qdrant Vector DB]
     
     E[Build / Runtime Error] --> F[Context Retrieval Engine]
     D --> F
-    F --> G[Autonomous Fix Engine\n(LangGraph + Single LLM)]
-    
+    F --> G[Autonomous Fix Engine]
     G --> H[Patch Application]
     H --> I[Validation Sandbox\nDocker Executor]
     
@@ -40,12 +39,9 @@ flowchart TD
     J -->|No| L[Retry Evaluation Loop]
     L --> G
     
-    K --> M[GitHub PR with Diff, Logs & Explanation]
+    K --> M[GitHub PR with Logs & Diff]
     
-    subgraph "Observability Layer"
-        N[OpenTelemetry Tracing] 
-        O[Structured JSON Logging]
-        P[Metrics & Request Tracking]
+    subgraph Observability
+        N[OpenTelemetry Tracing]
+        O[Structured Logging]
     end
-    
-    N & O & P --> B & G & I & K
